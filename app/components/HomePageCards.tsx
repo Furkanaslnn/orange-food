@@ -57,7 +57,7 @@ const HomePageCards = () => {
               <Button
                 variant="default"
                 className="w-full"
-                onClick={() => (window.location.href = "/categories")}
+                onClick={() => (window.location.href = "/foodrecipe")}
               >
                 İncele
               </Button>

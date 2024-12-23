@@ -9,29 +9,29 @@ body {
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --foreground: 0 0% 10%; /* Aydınlık temada daha koyu bir yazı rengi */
+    --card: 0 0% 98%; /* Kartların açık arka plan rengi */
+    --card-foreground: 0 0% 10%; /* Kartların yazı rengi */
+    --popover: 0 0% 98%; /* Popover açık arka plan rengi */
+    --popover-foreground: 0 0% 10%; /* Popover yazı rengi */
+    --primary: 0 0% 15%; /* Daha koyu bir birincil renk */
+    --primary-foreground: 0 0% 95%; /* Daha açık bir yazı rengi */
+    --secondary: 0 0% 85%; /* Daha nötr bir renk */
+    --secondary-foreground: 0 0% 10%;
+    --muted: 0 0% 90%; /* Daha koyu muted rengi */
+    --muted-foreground: 0 0% 20%;
+    --accent: 0 0% 70%; /* Accent rengi */
+    --accent-foreground: 0 0% 10%; /* Accent yazı rengi */
+    --destructive: 0 84.2% 50%; /* Daha koyu kırmızı destructive */
+    --destructive-foreground: 0 0% 90%; /* Destructive yazı rengi */
+    --border: 0 0% 80%; /* Daha koyu border rengi */
+    --input: 0 0% 85%; /* Daha koyu input arka planı */
+    --ring: 0 0% 10%; /* Daha koyu bir ring rengi */
+    --chart-1: 0 0% 20%; /* Daha koyu grafik rengi */
+    --chart-2: 0 0% 30%;
+    --chart-3: 0 0% 40%;
+    --chart-4: 0 0% 50%;
+    --chart-5: 0 0% 60%;
     --radius: 0.5rem;
   }
   .dark {
@@ -54,11 +54,11 @@ body {
     --border: 0 0% 20%; /* Daha koyu border rengi */
     --input: 0 0% 20%; /* Daha koyu input rengi */
     --ring: 0 0% 30%; /* Daha koyu ring rengi */
-    --chart-1: 220 70% 50%; /* Chart renkleri */
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --chart-1: 0 0% 40%; /* Grafik renkleri nötrleştirildi */
+    --chart-2: 0 0% 50%;
+    --chart-3: 0 0% 60%;
+    --chart-4: 0 0% 70%;
+    --chart-5: 0 0% 80%;
   }
 }
 

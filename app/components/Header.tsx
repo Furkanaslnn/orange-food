@@ -41,7 +41,7 @@ const Header = () => {
             Yapay Zeka
           </Link>
           <Link
-            href="/categories"
+            href="/foodrecipe"
             className="text-foreground dark:text-foreground hover:text-primary dark:hover:text-primary"
           >
             Tarif Kategorileri
@@ -96,7 +96,7 @@ const Header = () => {
                 Yapay Zeka
               </Link>
               <Link
-                href="/categories"
+                href="/foodrecipe"
                 className="hover:text-primary"
                 onClick={() => setMenuOpen(false)}
               >
