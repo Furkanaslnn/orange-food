@@ -12,7 +12,15 @@ import { Button } from "@/components/ui/button";
 const HomePageCards = () => {
   return (
     <div>
-      <div className="container mx-auto py-8">
+      <div className="">
+        <h1 className="text-center mt-12 font-bold text-4xl">
+          Lezzetli Tarifleri Keşfedin
+        </h1>
+        <p className="text-center mt-3 text-xl">
+          Yapay zeka nın lezzet dolu yolculuğuna çıkmaya hazırmısnız?
+        </p>
+      </div>
+      <div className="container mx-auto py-8 mt-10">
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Kart 1 - Yapay Zeka */}
           <Card className="bg-card dark:bg-card">
