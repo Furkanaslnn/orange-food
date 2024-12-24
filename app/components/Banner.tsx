@@ -44,7 +44,7 @@ const Banner = () => {
   return (
     <div>
       <div>
-        <div className="relative bg-gray-100 dark:bg-gray-800">
+        <div className="relative bg-gray-100 dark:bg-gray-800 ">
           {/* Slide Görüntüsü */}
           <img
             src={slides[currentIndex].image}

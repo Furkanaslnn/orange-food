@@ -11,8 +11,6 @@ const Categories = () => {
     "Kahvaltılık",
     "Çorba",
     "Ana Yemek",
-    "Etli",
-    "Sebzeli",
     "Tatlı",
     "Atıştırmalık",
     "İçecek",
@@ -30,7 +28,7 @@ const Categories = () => {
           <Button
             key={index}
             variant={selectedCategory === category ? "ghost" : "outline"}
-            onClick={() => setSelectedCategory(category)} // Kategori seçimi
+            onClick={() => setSelectedCategory(category)}
             className="px-4 py-2 text-sm bg-card text-card-foreground hover:bg-muted hover:text-muted-foreground"
           >
             {category}
