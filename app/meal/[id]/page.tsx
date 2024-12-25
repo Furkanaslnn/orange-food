@@ -45,12 +45,14 @@ const MealDetail = () => {
               alt={meal.name}
               className="w-full h-96 object-cover rounded-lg mb-6"
             />
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
-              reiciendis soluta eum nemo alias et dolor ea tenetur quidem est
-              nisi ad, laborum atque, ut nulla praesentium tempora dignissimos
-              labore.
-            </p>
+            <p className="text-lg font-medium mb-4">Malzemeler:</p>
+            {meal.recipe.ingredients.map((ingredient, index) => (
+              <p key={index} className="mb-1">
+                👉 {ingredient}
+              </p>
+            ))}
+            <p className="text-lg font-medium mt-6 mb-4">Tarif:</p>
+            <p className="mb-4">{meal.recipe.instructions}</p>
           </CardContent>
           <CardFooter className="text-center mt-6">
             <Link href={"/foodrecipe"}>

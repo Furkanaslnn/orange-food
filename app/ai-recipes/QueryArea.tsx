@@ -10,16 +10,14 @@ const QueryArea = () => {
   const [recipe, setRecipe] = useState(""); // Tarif sonucu
 
   const handleGenerateRecipe = async () => {
-    // Backend işlem simülasyonu
-    setTimeout(() => {
-      setRecipe(
-        "Verilen malzemelerle örnek bir yemek tarifi: Tavuk sarımsak soslu zeytinyağında kızartılır, üzerine baharat eklenir ve pilav ile servis edilir. Afiyet olsun!"
-      );
-    }, 1500);
+    // Tarif oluşturma işlemi
+    const response = await fetch(`/api/recipe?ingredients=${ingredients}`);
+
+    setRecipe("!");
   };
+
   return (
     <div>
-      {" "}
       <div
         className="flex items-center justify-center min-h-screen bg-cover bg-center"
         style={{
