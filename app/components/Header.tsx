@@ -21,19 +21,15 @@ const Header = () => {
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
         {/* Logo */}
         <div className="flex items-center">
-          <span className="text-2xl font-bold text-foreground dark:text-foreground">
-            🍴 Orange Food
-          </span>
+          <Link href="/">
+            <span className="text-2xl font-bold text-foreground dark:text-foreground">
+              🍴 Orange Food
+            </span>
+          </Link>
         </div>
 
         {/* Navigation Links */}
         <nav className="hidden md:flex space-x-6">
-          <Link
-            href="/"
-            className="text-foreground dark:text-foreground hover:text-primary dark:hover:text-primary"
-          >
-            Anasayfa
-          </Link>
           <Link
             href="/ai-recipes"
             className="text-foreground dark:text-foreground hover:text-primary dark:hover:text-primary"
