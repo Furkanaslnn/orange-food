@@ -7,71 +7,70 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import dailyMenu from "./DailyMenu"; // Günlük Menü Verilerini İçe Aktarıyoruz
 
-const DailyMenu = () => {
-  const dailyMenu = [
-    {
-      mealTime: "Kahvaltı",
-      items: ["Peynir", "Zeytin", "Ekmek", "Reçel", "Çay"],
-      image: "/breakfast.jpg",
-    },
-    {
-      mealTime: "Öğle Yemeği",
-      items: ["Mercimek Çorbası", "Tavuk Sote", "Pirinç Pilavı", "Ayran"],
-      image: "/lunch.jpg",
-    },
-    {
-      mealTime: "Akşam Yemeği",
-      items: ["Kuru Fasulye", "Bulgur Pilavı", "Turşu", "Şalgam"],
-      image: "/dinner.jpg",
-    },
-  ];
+const DailyMenuComponent = () => {
   return (
     <div>
-      <Header></Header>
-      <div className="min-h-screen bg-primary/10">
+      <Header />
+      <div className="min-h-screen bg-background">
         <div className="container mx-auto py-10 px-6">
-          <h1 className="text-3xl font-bold text-center mb-10 text-primary">
-            Günlük Menü
+          <h1 className="text-4xl font-bold text-center mb-12 text-primary">
+            Günlük Yemek Menüsü
           </h1>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+          <div className="space-y-10">
             {dailyMenu.map((meal, index) => (
               <Card
                 key={index}
-                className="bg-card text-card-foreground shadow-lg border border-border "
+                className="bg-card text-card-foreground shadow-md border border-border"
               >
-                <CardHeader className="text-center">
-                  <h2 className="text-xl font-bold text-primary">
+                {/* Öğün Başlığı ve Resmi */}
+                <CardHeader className="flex flex-col items-center text-center">
+                  <h2 className="text-2xl font-bold text-primary mb-4">
                     {meal.mealTime}
                   </h2>
-                </CardHeader>
-                <CardContent>
                   <img
                     src={meal.image}
                     alt={meal.mealTime}
-                    className="w-full h-40 object-cover rounded-lg mb-4"
+                    className="w-full max-w-md h-56 object-cover rounded-lg mb-6 shadow-md"
                   />
-                  <ul className="text-muted-foreground list-disc pl-5">
+                </CardHeader>
+
+                {/* Yemekler ve Tarifleri */}
+                <CardContent>
+                  <h3 className="text-lg font-semibold mb-4 text-muted-foreground">
+                    Yemekler ve Tarifler:
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {meal.items.map((item, idx) => (
-                      <li key={idx}>{item}</li>
+                      <div
+                        key={idx}
+                        className="p-4 bg-muted rounded-lg shadow-sm hover:shadow-lg transition-all"
+                      >
+                        <h3 className="text-lg font-semibold text-primary mb-2">
+                          {item.name}
+                        </h3>
+                        <p className="text-sm text-muted-foreground">
+                          {item.recipe}
+                        </p>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </CardContent>
-                <CardFooter className="text-center mt-4">
-                  <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
-                    Daha Fazla Detay
-                  </Button>
+                <CardFooter className="text-center mt-6">
+                  <p className="text-muted-foreground text-sm">
+                    Bu menü sizin için hazırlandı!
+                  </p>
                 </CardFooter>
               </Card>
             ))}
           </div>
         </div>
       </div>
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 };
 
-export default DailyMenu;
+export default DailyMenuComponent;
