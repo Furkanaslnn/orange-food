@@ -8,8 +8,16 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import { useCategory } from "./CategoryContext";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Recipe {
   ingredients: string[];
@@ -32,6 +40,8 @@ const CategoryMeals = () => {
   const [meals, setMeals] = useState<Meals | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [selectedMeal, setSelectedMeal] = useState<Meal | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchMeals = async () => {
@@ -51,6 +61,16 @@ const CategoryMeals = () => {
 
     fetchMeals();
   }, []);
+
+  const openDialog = (meal: Meal) => {
+    setSelectedMeal(meal);
+    setIsDialogOpen(true);
+  };
+
+  const closeDialog = () => {
+    setIsDialogOpen(false);
+    setSelectedMeal(null);
+  };
 
   if (loading) {
     return (
@@ -110,15 +130,41 @@ const CategoryMeals = () => {
               </h3>
             </CardContent>
             <CardFooter>
-              <Link href={""}>
-                <Button variant="outline" className="w-full">
-                  Tarif Detayları
-                </Button>
-              </Link>
+              <Button
+                variant="outline"
+                className="w-full"
+                onClick={() => openDialog(meal)}
+              >
+                Tarif Detayları
+              </Button>
             </CardFooter>
           </Card>
         ))}
       </div>
+
+      {isDialogOpen && selectedMeal && (
+        <Dialog open={isDialogOpen} onOpenChange={closeDialog}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>{selectedMeal.name}</DialogTitle>
+              <DialogDescription>
+                <p>
+                  <strong>Malzemeler:</strong>
+                </p>
+                <ul>
+                  {selectedMeal.recipe.ingredients.map((ingredient, index) => (
+                    <li key={index}>{ingredient}</li>
+                  ))}
+                </ul>
+                <p className="mt-4">
+                  <strong>Tarifin Yapılışı:</strong>
+                </p>
+                <p>{selectedMeal.recipe.instructions}</p>
+              </DialogDescription>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
+      )}
     </div>
   );
 };
