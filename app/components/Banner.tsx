@@ -1,9 +1,9 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
 const Banner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const slideRef = useRef(null); // GSAP ile animasyon uygulamak için ref
   const slides = [
     {
       image: "yapayzeka_card.png",
@@ -29,30 +29,61 @@ const Banner = () => {
     },
   ];
 
+  // Slayt Değişim Animasyonu
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+    gsap.to(slideRef.current, {
+      opacity: 0,
+      x: -100,
+      duration: 0.5,
+      onComplete: () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+        gsap.fromTo(
+          slideRef.current,
+          { x: 100, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.5 }
+        );
+      },
+    });
   };
+
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? slides.length - 1 : prevIndex - 1
-    );
+    gsap.to(slideRef.current, {
+      opacity: 0,
+      x: 100,
+      duration: 0.5,
+      onComplete: () => {
+        setCurrentIndex((prevIndex) =>
+          prevIndex === 0 ? slides.length - 1 : prevIndex - 1
+        );
+        gsap.fromTo(
+          slideRef.current,
+          { x: -100, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.5 }
+        );
+      },
+    });
   };
+
   useEffect(() => {
-    const interval = setInterval(nextSlide, 3000);
+    const interval = setInterval(nextSlide, 5000); // 5 saniyede bir slayt değişimi
     return () => clearInterval(interval);
   }, []);
+
   return (
     <div>
-      <div>
-        <div className="relative bg-gray-100 dark:bg-gray-800 ">
-          {/* Slide Görüntüsü */}
+      <div className="relative bg-background dark:bg-background">
+        {/* Slide Görüntüsü */}
+        <div
+          ref={slideRef}
+          className="relative flex flex-col items-center justify-center text-center"
+        >
           <img
             src={slides[currentIndex].image}
             alt={slides[currentIndex].title}
             className="w-full min-h-96 object-cover sm:h-[30rem] md:h-[35rem] lg:h-[40rem]"
           />
           <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-            <div className="text-center text-white px-4">
+            <div className="text-white px-4">
               <h1 className="text-3xl sm:text-5xl font-bold mb-4">
                 {slides[currentIndex].title}
               </h1>
@@ -69,21 +100,21 @@ const Banner = () => {
               </button>
             </div>
           </div>
-
-          {/* Kaydırma Kontrolleri */}
-          <button
-            onClick={prevSlide}
-            className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white text-3xl font-bold focus:outline-none"
-          >
-            ‹
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white text-3xl font-bold focus:outline-none"
-          >
-            ›
-          </button>
         </div>
+
+        {/* Kaydırma Kontrolleri */}
+        <button
+          onClick={prevSlide}
+          className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white text-3xl font-bold focus:outline-none"
+        >
+          ‹
+        </button>
+        <button
+          onClick={nextSlide}
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white text-3xl font-bold focus:outline-none"
+        >
+          ›
+        </button>
       </div>
     </div>
   );

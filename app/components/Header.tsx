@@ -49,9 +49,14 @@ const Header = () => {
             Günlük Menü
           </Link>
         </nav>
-
         {/* Dark Mode Toggle */}
         <div className="flex items-center space-x-4">
+          <Link href={"/login"} className="hover:text-primary">
+            Giriş Yap
+          </Link>
+          <Link href={"/register"} className="hover:text-primary">
+            Kayıt Ol
+          </Link>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="icon">
@@ -73,41 +78,6 @@ const Header = () => {
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-        {/* Mobile Menu */}
-        {menuOpen && (
-          <div className="md:hidden bg-card text-card-foreground border-t border-border">
-            <nav className="flex flex-col space-y-4 py-4 px-6">
-              <Link
-                href="/"
-                className="hover:text-primary"
-                onClick={() => setMenuOpen(false)}
-              >
-                Anasayfa
-              </Link>
-              <Link
-                href="/ai-recipes"
-                className="hover:text-primary"
-                onClick={() => setMenuOpen(false)}
-              >
-                Yapay Zeka
-              </Link>
-              <Link
-                href="/foodrecipe"
-                className="hover:text-primary"
-                onClick={() => setMenuOpen(false)}
-              >
-                Tarif Kategorileri
-              </Link>
-              <Link
-                href="/daily-menu"
-                className="hover:text-primary"
-                onClick={() => setMenuOpen(false)}
-              >
-                Günlük Menü
-              </Link>
-            </nav>
-          </div>
-        )}
       </div>
     </div>
   );
