@@ -62,7 +62,7 @@ const QueryArea = () => {
         }}
       >
         {/* İçerik Alanı */}
-        <div className="mx-2 w-full max-w-3xl p-10 bg-card text-card-foreground rounded-3xl shadow-lg border border-border">
+        <div className="my-10 mx-2 w-full max-w-3xl p-10 bg-card text-card-foreground rounded-3xl shadow-lg border border-border">
           <h1 className="text-3xl font-bold text-center mb-6">Tarif Bulucu</h1>
           {/* Giriş Alanı */}
           <Input
